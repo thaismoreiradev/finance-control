@@ -18,14 +18,12 @@ function App() {
 
 
   const data = localStorage.getItem("transactions");
-  // console.log("data")
-  // console.log(data)
+
 
   const [transactionsList, setTransactionsList] = useState(
     data ? JSON.parse(data) : []
   )
-  // console.log("transaction list")
-  // console.log(transactionsList)
+
   const [inCome, setInCome] = useState(0);
   const [expense, setExpense] = useState(0);
   const [total, setTotal] = useState(0);
@@ -70,47 +68,54 @@ function App() {
 
 
   return (
-    <div className='m-0 p-0 w-screen h-screen bg-red-200 flex flex-col items-center justify-center gap-3'>
 
-      <header>
-        <h1>Finance Control</h1>
-      </header>
+    <div className='bg-red-200 w-screen h-screen flex flex-col'>
 
-      {/* container for resume */}
-      <div className='bg-blue-300 max-w-[11200px] flex gap-3'>
-        <ResumeCard
-          title={"entradas"}
-          Icon={BsArrowUpCircleFill}
-          value={inCome}
+      <main className='flex flex-col items-center justify-center gap-3 bg-violet-400  m-3'>
+
+        <header className='flex flex-col items-center justify-center'>
+          <h1 className='text-3xl'>Finance Control</h1>
+
+
+          {/* container for resume */}
+          <section className='bg-blue-300 flex items-center justify-center max-w-[30%] gap-2 mt-2'>
+            <ResumeCard
+              title={"INCOME"}
+              
+              value={inCome}
+            />
+
+            <ResumeCard
+              title={"EXPENSES"}
+              
+              value={expense}
+            />
+
+            <ResumeCard
+              title={"BALANCE"}
+                
+              value={total}
+            />
+
+          </section>
+        </header>
+
+
+        {/* for add a new value */}
+        <ValueForm
+          handleAdd={handleAdd}
+          transactionsList={transactionsList}
+          setTransactionsList={setTransactionsList}
         />
 
-        <ResumeCard
-          title={"saídas"}
-          Icon={BsArrowDownCircleFill}
-          value={expense}
+
+        {/* lines for every value added */}
+        <List
+          itens={transactionsList}
+          setItens={setTransactionsList}
         />
 
-        <ResumeCard
-          title={"total"}
-          Icon={FaMoneyBillAlt}
-          value={total}
-        />
-
-      </div>
-
-
-
-      <ValueForm
-        handleAdd={handleAdd}
-        transactionsList={transactionsList}
-        setTransactionsList={setTransactionsList}
-      />
-
-
-      <List
-        itens={transactionsList}
-        setItens={setTransactionsList}
-      />
+      </main>
 
       <Footer />
 

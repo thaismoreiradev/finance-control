@@ -17,23 +17,26 @@ export const List = ({ itens, setItens }) => {
     return (
 
 
-        <table>
+        <table className='border w-full text-left'>
 
             <thead>
                 <tr>
-                    <th>Description</th>
-                    <th>Value</th>
-                    <th>Type</th>
-
+                    <th className='border'>Description</th>
+                    <th className='border'>Value</th>
+                    <th rowSpan={2}>Type</th>
 
                 </tr>
             </thead>
 
             <tbody>
-                {itens?.map((item, index) => (
-                    <ListItem key={index} item={item} onDelete={onDelete} />
-                ))}
 
+
+
+                {itens.map(item => <ListItem
+                    item={item}
+                    onDelete={onDelete}
+                />)
+                }
 
             </tbody>
         </table>
