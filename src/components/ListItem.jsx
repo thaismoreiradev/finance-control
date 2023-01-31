@@ -12,22 +12,24 @@ export const ListItem = ({ item, onDelete }) => {
 
 
   return (
-    <tr className='border border-collapse text-xs'>
-      <td className='border'>{item.description}</td>
-      <td className='border'>{item.amount}</td>
-      <td>{item.expense ? (<BsArrowDownCircleFill />) : (<BsArrowUpCircleFill />)
-      }</td>
-      <td onClick={() => onDelete(item.id)}><BsTrashFill /></td>
+    <tr className='border text-xs sm:text-sm break-all'>
+      <td className='border px-2 py-1'>{item.description}</td>
+      <td className='border px-2 py-1'>{item.amount}</td>
+
+
+      <td className='px-2 py-1 flex gap-2' >{item.expense ? (<BsArrowDownCircleFill />) : (<BsArrowUpCircleFill />)
+      }
+      
+        <BsTrashFill onClick={() => onDelete(item.id)} 
+        className='cursor-pointer' />
+      
+      </td>
+      
+
     </tr>
 
 
-    // <tr className='table border-collapse text-xs'>
-    //   <td className=''>{item.description}</td>
-    //   <td>{item.amount}</td>
-    //   <td>{item.expense ? (<BsArrowDownCircleFill />) : (<BsArrowUpCircleFill />)
-    //   }</td>
-    //   <td onClick={() => onDelete(item.id)}><BsTrashFill /></td>
-    // </tr>
+
   )
 }
 

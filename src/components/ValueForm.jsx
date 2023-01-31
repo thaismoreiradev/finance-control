@@ -55,7 +55,7 @@ export const ValueForm = ({ handleAdd }) => {
 
     return (
         <form
-            className='bg-green-300 w-full rounded-md px-2 pt-3 gap-2 flex flex-col text-sm'
+            className='bg-green-300 w-full rounded-md px-2 pt-3 gap-2 flex flex-col'
 
             onSubmit={(e) => {
                 e.preventDefault()
@@ -65,6 +65,7 @@ export const ValueForm = ({ handleAdd }) => {
             <div className='bg-pink-300 flex'>
                 <label>Description</label>
                 <input type="text"
+                    maxlength="30"
                     className='rounded-sm px-1 ml-1 w-full'
                     placeholder='insert a little text here' value={description}
                     onChange={(e) => setDescription(e.target.value)}
@@ -75,6 +76,7 @@ export const ValueForm = ({ handleAdd }) => {
             <div className='bg-pink-300 flex'>
                 <label htmlFor="">Value</label>
                 <input type="number"
+                    max="1000000000"
                     className='rounded-sm px-1 ml-1 w-full'
                     placeholder='insert a money value here' value={amount}
                     onChange={(e) => setAmount(e.target.value)}
@@ -93,7 +95,7 @@ export const ValueForm = ({ handleAdd }) => {
                     value={isExpense}
                     onChange={() => setIsExpense(false)} />
                 <label htmlFor="moneypositive">
-                    entrada</label>
+                    income</label>
 
 
 
@@ -104,7 +106,7 @@ export const ValueForm = ({ handleAdd }) => {
                     value={isExpense}
                     onChange={() => setIsExpense(true)} />
                 <label htmlFor="moneynegative">
-                    saída</label>
+                    expense</label>
 
 
 

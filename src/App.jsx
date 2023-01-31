@@ -69,16 +69,16 @@ function App() {
 
   return (
 
-    <div className='bg-red-200 w-screen h-screen flex flex-col'>
+    <div className='bg-red-200 w-screen h-screen m-auto flex flex-col  justify-between overflow-auto	text-xs sm:text-sm'>
 
-      <main className='flex flex-col items-center justify-center gap-3 bg-violet-400  m-3'>
+      <main className='flex flex-col items-center justify-center min-w-[290px] mt-5 md:mt-10 md:mx-20 lg:mx-32 xl:mx-48 gap-3 bg-violet-400 m-3'>
 
         <header className='flex flex-col items-center justify-center'>
-          <h1 className='text-3xl'>Finance Control</h1>
+          <h1 className='text-3xl font-Titillium pt-1'>Finance Control</h1>
 
 
           {/* container for resume */}
-          <section className='bg-blue-300 flex items-center justify-center max-w-[30%] gap-2 mt-2'>
+          <section className='bg-blue-300 flex w-[30%] gap-2 mt-2 break-all'>
             <ResumeCard
               title={"INCOME"}
               

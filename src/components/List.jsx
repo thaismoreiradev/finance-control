@@ -21,9 +21,9 @@ export const List = ({ itens, setItens }) => {
 
             <thead>
                 <tr>
-                    <th className='border'>Description</th>
-                    <th className='border'>Value</th>
-                    <th rowSpan={2}>Type</th>
+                    <th className='border px-2 font-Titillium '>Description</th>
+                    <th className='border px-2 font-Titillium'>Value</th>
+                    <th colSpan={2} className='font-Titillium pl-2 pr-0 py-1'>Type</th>
 
                 </tr>
             </thead>
