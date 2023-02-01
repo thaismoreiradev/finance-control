@@ -2,12 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-.table {
-    display: flex;    
-    align-items: center;
-    justify-content: center;
-    border-color: white;
-    border-width: 2px;
-    text-align: center;
-}
-

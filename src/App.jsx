@@ -4,21 +4,14 @@ import { ValueForm } from './components/ValueForm'
 import { List } from './components/List'
 import { Footer } from './components/Footer'
 
-import {
-  BsArrowUpCircleFill,
-  BsArrowDownCircleFill,
-} from 'react-icons/bs'
-import { FaMoneyBillAlt } from 'react-icons/fa'
 
 
 
 
-function App() {
-
+export const App = () => {
 
 
   const data = localStorage.getItem("transactions");
-
 
   const [transactionsList, setTransactionsList] = useState(
     data ? JSON.parse(data) : []
@@ -27,6 +20,9 @@ function App() {
   const [inCome, setInCome] = useState(0);
   const [expense, setExpense] = useState(0);
   const [total, setTotal] = useState(0);
+
+
+
 
 
   useEffect(
@@ -52,7 +48,6 @@ function App() {
       setTotal(`${Number(inCome) < Number(expense) ? "- " : ""}R$ ${total}`);
 
 
-
     }, [transactionsList]
   )
 
@@ -67,47 +62,47 @@ function App() {
 
 
 
+
   return (
 
-    <div className='bg-red-200 w-screen h-screen m-auto flex flex-col  justify-between overflow-auto	text-xs sm:text-sm'>
-
-      <main className='flex flex-col items-center justify-center min-w-[290px] mt-5 md:mt-10 md:mx-20 lg:mx-32 xl:mx-48 gap-3 bg-violet-400 m-3'>
-
-        <header className='flex flex-col items-center justify-center'>
-          <h1 className='text-3xl font-Titillium pt-1'>Finance Control</h1>
 
 
-          {/* container for resume */}
-          <section className='bg-blue-300 flex w-[30%] gap-2 mt-2 break-all'>
-            <ResumeCard
-              title={"INCOME"}
-              
-              value={inCome}
-            />
+    <div className='bg-slate-100 border-slate-700 w-screen h-screen m-auto flex flex-col justify-between overflow-auto	text-xs sm:text-sm'>
+      <main className='bg-white rounded-xl px-2 py-5 flex flex-col items-center justify-center self-center min-w-[290px] mt-5 md:mt-10 gap-3 m-3'>
 
-            <ResumeCard
-              title={"EXPENSES"}
-              
-              value={expense}
-            />
-
-            <ResumeCard
-              title={"BALANCE"}
-                
-              value={total}
-            />
-
-          </section>
+        <header className='flex flex-col items-center justify-center gap-2'>
+          <h1 className='text-3xl xl:text-4xl text-slate-800 font-Titillium font-semibold pt-1'>Finance Control</h1>
         </header>
 
 
-        {/* for add a new value */}
+        {/* container for resume */}
+        <section className='flex justify-center gap-2 mt-2 break-all'>
+
+          <ResumeCard
+            title={"INCOME"}
+            value={inCome}
+          />
+
+          <ResumeCard
+            title={"EXPENSES"}
+            value={expense}
+          />
+
+          <ResumeCard
+            title={"BALANCE"}
+            value={total}
+          />
+
+        </section>
+
+
+
+        {/* section for add a new value */}
         <ValueForm
           handleAdd={handleAdd}
           transactionsList={transactionsList}
           setTransactionsList={setTransactionsList}
         />
-
 
         {/* lines for every value added */}
         <List
@@ -116,11 +111,9 @@ function App() {
         />
 
       </main>
-
       <Footer />
-
     </div>
   )
 }
 
-export default App
+

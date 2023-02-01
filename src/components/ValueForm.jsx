@@ -7,7 +7,6 @@ export const ValueForm = ({ handleAdd }) => {
     const [description, setDescription] = useState("");
     const [amount, setAmount] = useState("");
     const [isExpense, setIsExpense] = useState();
-
     const [message, setMessage] = useState("");
 
 
@@ -21,19 +20,19 @@ export const ValueForm = ({ handleAdd }) => {
             setMessage("Enter a description")
             return
         } else if (description && !amount) {
-            setMessage("Enter an amount")
+            setMessage("Enter a number please")
             return
         } else if (amount < 1) {
             setMessage("Amount value must be positive")
             return
         } else if (isExpense == null) {
-            setMessage("choose one type")
+            setMessage("select one type")
             return
         }
 
 
         const currentTransaction = {
-            id: Math.round(Math.random() * 1000),
+            id: new Date(),
             description: description,
             amount: amount,
             expense: isExpense,
@@ -50,44 +49,42 @@ export const ValueForm = ({ handleAdd }) => {
 
 
 
-
-
-
     return (
-        <form
-            className='bg-green-300 w-full rounded-md px-2 pt-3 gap-2 flex flex-col'
 
+        <form className='bg-slate-700 text-white w-full rounded-md px-2 lg:px-40 pt-3 gap-2 flex flex-col'
             onSubmit={(e) => {
                 e.preventDefault()
             }}
         >
 
-            <div className='bg-pink-300 flex'>
+            <div className='flex gap-1'>
                 <label>Description</label>
-                <input type="text"
-                    maxlength="30"
-                    className='rounded-sm px-1 ml-1 w-full'
+                <input
+                    type="text"
+                    maxLength="30"
+                    className='rounded-sm px-1 ml-1 w-full outline-none text-slate-700'
                     placeholder='insert a little text here' value={description}
                     onChange={(e) => setDescription(e.target.value)}
                 />
             </div>
 
 
-            <div className='bg-pink-300 flex'>
+            <div className='flex gap-1'>
                 <label htmlFor="">Value</label>
-                <input type="number"
+                <input
+                    type="number"
                     max="1000000000"
-                    className='rounded-sm px-1 ml-1 w-full'
+                    className='rounded-sm px-1 ml-1 w-full outline-none text-slate-700'
                     placeholder='insert a money value here' value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                 />
             </div>
 
 
-            <div className='flex gap-1 '>
 
+
+            <div className='flex items-center m-auto gap-1 '>
                 <input
-
                     type="radio"
                     name='radiotype'
                     id='moneypositive'
@@ -96,8 +93,6 @@ export const ValueForm = ({ handleAdd }) => {
                     onChange={() => setIsExpense(false)} />
                 <label htmlFor="moneypositive">
                     income</label>
-
-
 
                 <input
                     type="radio"
@@ -108,19 +103,14 @@ export const ValueForm = ({ handleAdd }) => {
                 <label htmlFor="moneynegative">
                     expense</label>
 
-
-
-
                 <button
-
                     type='submit'
-                    className='bg-blue-500 rounded-md px-5 ml-2'
+                    className='bg-yellow-200 text-slate-700 font-semibold rounded-md px-5 pb-[2px] ml-2'
                     onClick={handleSave}
                 >add</button>
             </div>
 
-            <p className='text-xs text-red-700 m-auto pb-1'>{message}</p>
-
+            <p className='text-xs text-red-300 m-auto pb-2'>{message}</p>
         </form>
     )
 }

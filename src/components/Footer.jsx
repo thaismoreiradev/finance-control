@@ -1,7 +1,6 @@
 export const Footer = () => (
 
-    <footer className="text-xs text-center pb-2">
-
+    <footer className="text-xs text-center text-slate-800 pb-2">
         <p>
             <a
                 href="https://github.com/thaismoreiradev"
@@ -11,6 +10,5 @@ export const Footer = () => (
             >Developed by Thais Moreira
             </a>
         </p>
-
     </footer>
 )
